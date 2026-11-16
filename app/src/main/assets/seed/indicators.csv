@@ -1,0 +1,4 @@
+type,unit,warning,critical,source_note
+ENERGY,MW,10.0,11.5,"Sintética: curva horária fictícia de carga elétrica (pico no fim da tarde), gerada por script com seed fixa"
+WATER,L/hab/dia,168.0,187.5,"Sintética: série diária fictícia de consumo por habitante, com referência hipotética de 150 L/hab/dia, gerada por script com seed fixa"
+CLIMATE,°C,0,0,"Sintética: temperatura diária e previsão fictícias, geradas por script com seed fixa"

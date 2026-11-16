@@ -1,0 +1,25 @@
+sequenceDiagram
+    autonumber
+    actor G as Gestor
+    participant UI as Painel / Alerta (Compose)
+    participant VM as DashboardViewModel
+    participant UC as ObserveTerritoryEvaluation + Notify
+    participant EV as TerritoryEvaluator + PredictionEngine
+    participant DB as Room
+    participant N as AndroidAlertNotifier
+
+    G->>UI: abre o app (ou volta ao primeiro plano)
+    UI->>VM: refresh() (no máximo 1x por minuto)
+    VM->>UC: avaliar território
+    UC->>DB: ler leituras (energia, água, clima)
+    UC->>EV: avaliar(leituras até agora, temperatura prevista)
+    EV-->>UC: indicadores + alerta CRÍTICO (justificativa, índice de confiança)
+    UC->>DB: gravar alerta
+    UC->>N: notificar (se crítico, ainda não notificado)
+    N-->>G: notificação (se permissão concedida) ou banner no painel (plano B)
+    VM-->>UI: UiState.Success
+    G->>UI: abre o alerta e lê a justificativa
+    G->>UI: escolhe Acatar/Adiar/Descartar, responsável e observação
+    UI->>UC: RegisterDecision (bloqueia duplicidade)
+    UC->>DB: gravar decisão
+    UI-->>G: "Decisão registrada" + histórico atualizado

@@ -1,0 +1,26 @@
+flowchart LR
+    Morador([Morador])
+    Gestor([Gestor Territorial])
+    Admin([Administrador / Curador de dados])
+
+    subgraph App["Territory Intelligence Dashboard (Android)"]
+        UI[Telas Compose]
+        Dom[Domínio: previsão e alertas]
+        DB[(Room + DataStore)]
+        Not[Notificação local]
+    end
+
+    Fontes[/"Arquivos abertos baixados pela equipe<br/>(ONS, SINISA) ou base sintética"/]
+    Script["tools/prepare_data.py"]
+    Assets[("assets/seed/*.csv")]
+
+    Morador -->|consulta indicadores e alertas| UI
+    Gestor -->|lê justificativa e registra decisão| UI
+    Admin -->|gera dados e define limiares| Script
+    Fontes -->|CSV| Script
+    Script -->|gera| Assets
+    Assets -->|"carga inicial (SeedLoader)"| DB
+    UI --> Dom
+    Dom -->|"lê leituras, grava alertas e decisões"| DB
+    Dom -->|"alerta crítico (sem duplicar)"| Not
+    Not -->|aviso| Gestor

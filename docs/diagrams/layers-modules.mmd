@@ -1,0 +1,33 @@
+flowchart TB
+    subgraph UI["ui (Compose)"]
+        Screens["Telas: Painel, Indicador, Alerta, Histórico, Configurações"]
+        Comp["Componentes: KpiCard, TrendChart, AlertCard, JustificationPanel, TerritorySelector, StateView, DecisionSheet"]
+        VM["ViewModels + UiState (StateFlow)"]
+        Screens --> Comp
+        Screens --> VM
+    end
+
+    subgraph Domain["domain (Kotlin puro)"]
+        UC["Casos de uso"]
+        Eval["TerritoryEvaluator"]
+        Engine["PredictionEngine"]
+        Resolver["NotificationPermissionResolver (regra pura)"]
+        Contracts[["Contratos: *Repository, AlertNotifier, TimeProvider, DataSeeder"]]
+        UC --> Eval --> Engine
+        UC --> Contracts
+    end
+
+    subgraph Data["data"]
+        Room[("Room")]
+        DS[("DataStore")]
+        Seed["SeedLoader (assets CSV)"]
+        Notif["AndroidAlertNotifier"]
+    end
+
+    VM --> UC
+    Room -. implementa .-> Contracts
+    DS -. implementa .-> Contracts
+    Notif -. implementa .-> Contracts
+    Seed --> Room
+    Notif --> Resolver
+    Notif --> AndroidAPI["NotificationManager / permissão"]

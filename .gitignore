@@ -1,0 +1,21 @@
+# Gradle / Android Studio
+.gradle/
+.idea/
+*.iml
+local.properties
+/build/
+app/build/
+/captures/
+.externalNativeBuild/
+.cxx/
+.kotlin/
+.DS_Store
+# Artefatos e segredos
+*.apk
+*.aab
+*.jks
+*.keystore
+.env
+# Dados brutos baixados manualmente (confira a licença antes de versionar)
+tools/raw/*
+!tools/raw/.gitkeep
