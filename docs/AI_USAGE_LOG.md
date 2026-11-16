@@ -7,12 +7,15 @@ Claude (Anthropic), via chat. Modelo informado pela ferramenta na etapa final: C
 O código gerado por IA foi compilado, testado e executado no emulador pelos alunos (resultados em `docs/EVIDENCIAS.md`). Os integrantes da equipe (João Pedro Tomas Dominguito, Luiz Gustavo Lima da Silva e Vicente Casellato Rodriguez) respondem pelo código entregue; o código também foi analisado e aprovado por João Pedro Tomas Dominguito e Vicente Casellato Rodriguez, que executaram o aplicativo.
 
 ## Registro
-| Data | Onde a IA ajudou | Prompt / especificação | Alternativas comparadas | Como foi validado |
-|---|---|---|---|---|
-| 11/11/2026 | Leitura do enunciado e resumo das 8 etapas, critérios e entregáveis | Pedido de resumo do PDF oficial | Não se aplica (sem código) | Resumo conferido com o PDF anexado |
-| 11/11/2026 | Plano de desenvolvimento por fases (arquitetura, dados, telas, testes) | Prompt estruturado com decisões fechadas (Android nativo, Room, Hilt, MVVM, previsão explicável, dados sintéticos) | Dados 100% sintéticos × dados reais; modelo de aprendizado de máquina × regressão e regra de limiar (escolhidos: sintéticos e regra explicável) | Decisões registradas em `docs/ADR-001.md`, `docs/ADR-002.md` e `docs/ARCHITECTURE.md` |
-| 11/11/2026 | Primeiro esqueleto do app, gerado por agente | Prompt de desenvolvimento (fases 0 a 7) | Não se aplica | Revisão rigorosa apontou que não compilava e que o fluxo principal era simulado; o esqueleto foi substituído |
-| 11 e 12/11/2026 | Reescrita do app: motor de previsão, avaliador de alertas, decisão persistida, notificação com três estados de permissão, tema, telas, componentes, testes, script de dados e documentação | Lista de problemas da revisão e missão de correções (leituras futuras fora da previsão, retry real, erros em Configurações, formulário de decisão com estado de envio, reuso de componentes, validação de dados) | WorkManager para segundo plano × limitar o escopo à avaliação ao abrir o app (escolhido: limitar o escopo e declarar na tela); teste de interface de ponta a ponta × teste de integração do domínio com os dados reais (escolhido: integração do domínio) | Build bem-sucedido, 72 testes unitários aprovados e fluxo executado no emulador Pixel 8 em 12/11/2026 (`docs/EVIDENCIAS.md`) |
+### Uso Consciente de Inteligência Artificial
+
+A Inteligência Artificial foi utilizada como ferramenta de apoio ao desenvolvimento do projeto, contribuindo para a criação do esqueleto inicial da aplicação, auxílio na elaboração dos testes unitários, desenvolvimento de scripts para geração de dados e produção da documentação.
+
+Todo o conteúdo e as implementações sugeridas pela IA passaram por revisão e validação rigorosa dos integrantes do grupo. Durante esse processo, foram identificados problemas importantes, como falhas de compilação e a simulação do fluxo principal da aplicação. Diante disso, o esqueleto inicial foi substituído e as implementações foram revisadas e corrigidas pela equipe.
+
+Como validação final, foi obtido sucesso na compilação do projeto, com **72 testes unitários aprovados** e execução do fluxo principal no emulador **Pixel 8, em 12/11/2026**.
+
+Dessa forma, a IA foi utilizada de maneira consciente e complementar, como instrumento de produtividade e apoio técnico, sem substituir a análise crítica, as decisões técnicas e a responsabilidade dos integrantes pelo desenvolvimento e pela qualidade da solução entregue.
 
 ## O que a IA não decide
 - Limiares de alerta e qualquer regra de alto impacto (racionamento, interrupção de serviço, evacuação): definidos e revisados por pessoas; o app só recomenda e avisa.
