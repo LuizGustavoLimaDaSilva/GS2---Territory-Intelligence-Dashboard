@@ -109,7 +109,6 @@ Resultados registrados em `docs/EVIDENCIAS.md`, com as capturas de tela em `docs
 Registro completo em `docs/AI_USAGE_LOG.md`: ferramenta, finalidade, alternativas, validação e política do que a IA não decide.
 
 ## Referências
-- Enunciado da Global Solution GS2026.2, Prof. Dr. Leandro Ramos da Silva (FIAP).
 - Documentação oficial do Android (developer.android.com): Jetpack Compose, Material 3, Room, DataStore, Navigation, Notificações e permissão `POST_NOTIFICATIONS`, acessibilidade.
 - Kotlin (kotlinlang.org), Dagger Hilt, Kotlin Coroutines e Flow, Turbine (testes de Flow), JUnit 4.
 - WCAG 2.1, critério 1.4.3 (contraste mínimo de 4,5:1), usado no cálculo da paleta.
